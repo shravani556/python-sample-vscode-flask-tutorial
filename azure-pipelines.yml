@@ -1,4 +1,3 @@
-# Python package
 trigger:
 - main
 
@@ -9,8 +8,8 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      runas /user:Administrator "$(PYTHON_PATH)" -m pip install --upgrade pip
-      runas /user:Administrator "$(PYTHON_PATH)" -m pip install -r requirements.txt
-      runas /user:Administrator "$(PYTHON_PATH)" -m pip install pytest pytest-azurepipelines
-      runas /user:Administrator "$(PYTHON_PATH)" -m pytest
+      python -m pip install --upgrade pip
+      python -m pip install -r requirements.txt
+      python -m pip install pytest pytest-azurepipelines
+      python -m pytest
   displayName: 'Install dependencies and run tests'
