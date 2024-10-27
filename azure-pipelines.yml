@@ -3,14 +3,15 @@ trigger:
 - main
 
 pool:
-  name: Default  # Using Default pool for self-hosted agent
+  name: Default
+
+variables:
+  PYTHON_PATH: 'C:\Users\shravani.banda\AppData\Local\Programs\Python\Python313\python.exe'
 
 steps:
-# Removing UsePythonVersion task since we'll use local Python
-
 - script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    pip install pytest pytest-azurepipelines
-    pytest
+    "$(PYTHON_PATH)" -m pip install --upgrade pip
+    "$(PYTHON_PATH)" -m pip install -r requirements.txt
+    "$(PYTHON_PATH)" -m pip install pytest pytest-azurepipelines
+    "$(PYTHON_PATH)" -m pytest
   displayName: 'Install dependencies and run tests'
