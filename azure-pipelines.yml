@@ -3,49 +3,17 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: Default  # Using Default pool for self-hosted agent
 
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '3.8'
-  displayName: 'Test with Python 3.8'
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'Run tests on Python 3.8'
+    versionSpec: '3.13.0'
+  displayName: 'Use Python 3.13.0'
 
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.9'
-  displayName: 'Test with Python 3.9'
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt
     pip install pytest pytest-azurepipelines
     pytest
-  displayName: 'Run tests on Python 3.9'
-
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.10'
-  displayName: 'Test with Python 3.10'
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'Run tests on Python 3.10'
-
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.11'
-  displayName: 'Test with Python 3.11'
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'Run tests on Python 3.11'
+  displayName: 'Install dependencies and run tests'
