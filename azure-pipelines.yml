@@ -5,13 +5,12 @@ trigger:
 pool:
   name: Default
 
-variables:
-  PYTHON_PATH: 'C:\Users\shravani.banda\AppData\Local\Programs\Python\Python313\python.exe'
-
 steps:
-- script: |
-    "$(PYTHON_PATH)" -m pip install --upgrade pip
-    "$(PYTHON_PATH)" -m pip install -r requirements.txt
-    "$(PYTHON_PATH)" -m pip install pytest pytest-azurepipelines
-    "$(PYTHON_PATH)" -m pytest
+- task: CmdLine@2
+  inputs:
+    script: |
+      runas /user:Administrator "$(PYTHON_PATH)" -m pip install --upgrade pip
+      runas /user:Administrator "$(PYTHON_PATH)" -m pip install -r requirements.txt
+      runas /user:Administrator "$(PYTHON_PATH)" -m pip install pytest pytest-azurepipelines
+      runas /user:Administrator "$(PYTHON_PATH)" -m pytest
   displayName: 'Install dependencies and run tests'
