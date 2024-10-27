@@ -6,10 +6,7 @@ pool:
   name: Default  # Using Default pool for self-hosted agent
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.13.0'
-  displayName: 'Use Python 3.13.0'
+# Removing UsePythonVersion task since we'll use local Python
 
 - script: |
     python -m pip install --upgrade pip
