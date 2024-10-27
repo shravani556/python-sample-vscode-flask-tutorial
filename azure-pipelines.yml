@@ -8,5 +8,5 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      start notepad.exe
-  displayName: 'Open Notepad'
+      echo Hello, World! > "C:\Users\shravani.banda\Desktop\hello.txt"
+  displayName: 'Create hello.txt on Desktop'
